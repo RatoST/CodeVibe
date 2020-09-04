@@ -1,0 +1,42 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "fName": "Mike",
+      "lName": "Lee",
+      "address": "Milky Way 10",
+      "phone": "+38569987415",
+      "email": "mike.lee@react.hr",
+      "slug": "mikelee"
+    },
+    {
+      "id": 2,
+      "fName": "Anna",
+      "lName": "Bannana",
+      "address": "Maple Leaves 8",
+      "phone": "+1574875154",
+      "email": "ana.neka@react.hr",
+      "slug": "annabannana"
+    },
+    {
+      "id": 3,
+      "fName": "Michael",
+      "lName": "Lord",
+      "address": "Avenue 13",
+      "phone": "+38597589647",
+      "email": "michael.lord@react.hr",
+      "slug": "michaellord"
+    },
+    {
+      "id": 4,
+      "fName": "Ratko",
+      "lName": "Pokrajac",
+      "address": "Vinkovacka 10",
+      "phone": "+385915209013",
+      "email": "rato@net.hr",
+      "checkbox": "on",
+      "createdAt": 1599252881123,
+      "slug": "ratkopokrajac"
+    }
+  ]
+}

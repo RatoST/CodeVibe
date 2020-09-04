@@ -1,6 +1,6 @@
 #About
 
-This is app created as a part of an assignment for job application. It is form with save in backend in .json form inside tools folder.
+This is app created as a part of an assignment for job application. It is form with save in backend in db.txt form inside src/tools folder.
 
 #Install the project
 
