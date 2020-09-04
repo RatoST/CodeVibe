@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
+import CheckBox from "../common/CheckBox";
 import './contactForm.css';
+
 
 const ContactForm = ({
   contact,
@@ -50,11 +52,19 @@ const ContactForm = ({
       <TextInput
         name="email"
         label="Email"
+        type="email"
         value={contact.email}
         onChange={onChange}
         error={errors.email}
       />
-
+      <CheckBox
+        name="checkbox"
+        label="Agree on terms"
+        value=""
+        required
+        // error={errors.checkbox}
+        
+      />
       <button type="submit" disabled={saving} className="btn btn-success">
         {saving ? "Saving..." : "Save"}
       </button>

@@ -33,13 +33,16 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
   }
 
   function formIsValid() {
-    const { fName, lName, address, phone, email } = contact;
+    const { fName, lName, address, phone, email, checkbox } = contact;
     const errors = {};
     if (!fName) errors.fName = "Required";
     if (!lName) errors.lName = "Required";
     if (!address) errors.address = "Required";
     if (!phone) errors.phone = "Required";
+    if (!phone.includes("+")) errors.phone = "Bad format";
     if (!email) errors.email = "Required";
+    if (!email.includes("@")) errors.email = "Bad format";
+    // if (!checkbox) errors.checkbox = "Required";
 
     setErrors(errors);
     // Form is valid if the errors object stil has no properties
