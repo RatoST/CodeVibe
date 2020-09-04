@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as contactActions from '../../redux/actions/contactActions';
 import PropTypes from 'prop-types';
@@ -9,60 +9,61 @@ import Spinner from '../common/Spinner';
 import { toast } from 'react-toastify';
 import './contactsPage.css';
 
-class ContactsPage extends React.Component {
+const ContactsPage = ({ actions, contacts, loading, ...props }) => {
 
-  state = {
-    redirectToAddcontactPage: false
-  };
+  const [redirectToAddContactPage, setRedirectToAddContactPage] = useState(false);
 
-  componentDidMount() {
-    if (this.props.contacts.length === 0) {
-      this.props.actions.loadContacts().catch(error => {
+  useEffect(() => {
+    if(contacts.length === 0) {
+      actions.loadContacts().catch(error => {
         alert("Loading contacts failed" + error);
       });
     }
+  }, [props.contact]);
+
+  const handleDeleteContact = (contact) => {
+    toast.success("Contact deleted");
+    actions.deleteContact(contact).catch(error => {
+      toast.error("Delete failed. " + error.message, {autoClose: false});
+    })
   }
 
-  handleDeleteContact = contact => {
-    toast.success("Contact deleted");
-    this.props.actions.deleteContact(contact).catch(error => {
-      toast.error("Delete failed. " + error.message, { autoClose: false});
-    });
-  };
-
-  render() {
     return (
       <div className="contacts-background">
-        {this.state.redirectToAddContactPage && <Redirect to="/contact"/>}
+        {redirectToAddContactPage && <Redirect to="/contact"/>}
         <h2>Contact list</h2>
         <p>If you would like to become part of our worldwide network, just press the below button Sign up.</p>
-        {this.props.loading ?
+        {loading ?
         <Spinner/> : (
           <>
         <button
           style={{ marginBottom: 20 }}
           className="btn btn-success add-contact"
-          onClick={() => this.setState({ redirectToAddContactPage: true })}
+          onClick={() => setRedirectToAddContactPage(true)}
           >
             Sign up
-          </button>
+        </button>
+        { contacts.length === 0 ? (
+          <h2>The contact list is empty.</h2>
+        ):(  
         <ContactList 
-          contacts={this.props.contacts}
-          onDeleteClick={this.handleDeleteContact}
+          contacts={contacts}
+          onDeleteClick={handleDeleteContact}
           />
+        )}
         </>
         )}
       </div>
     );
-  }
 }
 ContactsPage.propTypes = {
   actions: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
   contacts: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     contacts: state.contacts.map(contact => {
       return {
@@ -74,7 +75,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
       loadContacts: bindActionCreators(contactActions.loadContacts, dispatch),

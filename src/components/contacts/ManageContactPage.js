@@ -1,15 +1,12 @@
-// Section 1: Imports
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as contactActions from '../../redux/actions/contactActions';
 import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 import { newContact } from '../../../tools/mockData';
-import Spinner from '../common/Spinner';
 import { toast } from 'react-toastify';
 
-// Section 2: Component
-function ManageContactPage({ contacts, history, loadContacts, saveContact, ...props }) {
+const ManageContactPage = ({ contacts, history, loadContacts, saveContact, ...props }) => {
   const [ contact, setContact] = useState({ ...props.contact});
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
@@ -24,7 +21,7 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
     }
   }, [props.contact]);
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setContact(prevContact => ({
       ...prevContact,
@@ -32,7 +29,7 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
     }));
   }
 
-  function formIsValid() {
+  const formIsValid = () => {
     const { fName, lName, address, phone, email, checkbox } = contact;
     const errors = {};
     if (!fName) errors.fName = "Required";
@@ -42,14 +39,13 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
     if (!phone.includes("+")) errors.phone = "Bad format";
     if (!email) errors.email = "Required";
     if (!email.includes("@")) errors.email = "Bad format";
-    // if (!checkbox) errors.checkbox = "Required";
+    if (!checkbox) errors.checkbox = "You need to accept terms";
 
     setErrors(errors);
-    // Form is valid if the errors object stil has no properties
     return Object.keys(errors).length === 0;
   }
 
-  function handleSave(event) {
+  const handleSave = (event) => {
     event.preventDefault();
     if (!formIsValid()) return;
     setSaving(true);
@@ -64,9 +60,6 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
   }
 
    return (
-     contacts.length === 0 ? (
-       <Spinner/>
-      ) : (
         <ContactForm
           contact={contact}
           errors={errors}
@@ -74,11 +67,9 @@ function ManageContactPage({ contacts, history, loadContacts, saveContact, ...pr
           onSave={handleSave}
           saving={saving}
         />
-      )
    );
   }
 
-// Section 3: PropTypes declaration
 ManageContactPage.propTypes = {
   contact: PropTypes.object.isRequired,
   contacts: PropTypes.array.isRequired,
@@ -87,15 +78,11 @@ ManageContactPage.propTypes = {
   saveContact: PropTypes.func.isRequired
 };
 
-
-
-// Section 4: Redux mappings
-
 export function getContactBySlug(contacts, slug) {
   return contacts.find(contact => contact.slug === slug) || null;
 }
 
-function mapStateToProps(state, ownProps) {
+ const mapStateToProps = (state, ownProps) => {
   const slug = ownProps.match.params.slug;
   const contact = slug && state.contacts.length > 0 ? getContactBySlug(state.contacts, slug) : newContact;
   return {
@@ -109,5 +96,4 @@ const mapDispatchToProps = {
   saveContact: contactActions.saveContact
 }
 
-//Section 5: Redux connect
 export default connect(mapStateToProps, mapDispatchToProps)(ManageContactPage);

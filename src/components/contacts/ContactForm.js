@@ -5,13 +5,12 @@ import TextInput from "../common/TextInput";
 import CheckBox from "../common/CheckBox";
 import './contactForm.css';
 
-
 const ContactForm = ({
   contact,
-  onSave,
+  errors = {},
   onChange,
-  saving = false,
-  errors = {}
+  onSave,
+  saving = false  
 }) => {
   return (
     <form onSubmit={onSave} className="form-background">
@@ -22,48 +21,46 @@ const ContactForm = ({
         </div>
       )}
       <TextInput
-        name="fName"
-        label="First name"
-        value={contact.fName}
-        onChange={onChange}
         error={errors.fName}
+        label="First name"
+        name="fName"
+        onChange={onChange}
+        value={contact.fName}   
       />
       <TextInput
-        name="lName"
-        label="Last name"
-        value={contact.lName}
-        onChange={onChange}
         error={errors.lName}
+        label="Last name"
+        name="lName"
+        onChange={onChange}
+        value={contact.lName}       
       />
       <TextInput
-        name="address"
-        label="Address"
-        value={contact.address}
-        onChange={onChange}
         error={errors.address}
-      />
-      <TextInput
-        name="phone"
-        label="Phone"
-        value={contact.phone}
+        label="Address"
+        name="address"
         onChange={onChange}
-        error={errors.phone}
+        value={contact.address}
       />
       <TextInput
-        name="email"
+        error={errors.phone}
+        label="Phone"
+        name="phone"
+        onChange={onChange}
+        value={contact.phone}
+      />
+      <TextInput
+        error={errors.email}
         label="Email"
+        name="email"
+        onChange={onChange}
         type="email"
         value={contact.email}
-        onChange={onChange}
-        error={errors.email}
       />
       <CheckBox
-        name="checkbox"
+        error={errors.checkbox}  
         label="Agree on terms"
-        value=""
-        required
-        // error={errors.checkbox}
-        
+        name="checkbox"        
+        onChange={onChange}              
       />
       <button type="submit" disabled={saving} className="btn btn-success">
         {saving ? "Saving..." : "Save"}
@@ -78,8 +75,8 @@ const ContactForm = ({
 ContactForm.propTypes = {
   contact: PropTypes.object.isRequired,
   errors: PropTypes.object,
-  onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
   saving: PropTypes.bool
 };
 

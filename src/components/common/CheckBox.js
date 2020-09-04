@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CheckBox = ({ name, label, onChange, required, error }) => {
+const CheckBox = ({ error, label, onChange, name }) => {
   let wrapperClass = "form-group";
   if (error && error.length > 0) {
     wrapperClass += " " + "has-error";
@@ -11,11 +11,10 @@ const CheckBox = ({ name, label, onChange, required, error }) => {
     <div className={wrapperClass}>      
       <div className="form-check">
         <input
-          type="checkbox"
-          name={name}
           className="form-check-input"
-          required={required}
+          name={name}
           onChange={onChange}
+          type="checkbox"  
         />
         <label htmlFor={name} className="form-check-label">{label}</label>
         {error && <div className="alert alert-danger">{error}</div>}
@@ -25,12 +24,12 @@ const CheckBox = ({ name, label, onChange, required, error }) => {
 };
 
 CheckBox.propTypes = {
-  name: PropTypes.string.isRequired,
+  error: PropTypes.string,
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,  
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
-  error: PropTypes.string
+  value: PropTypes.string,  
 };
 
 export default CheckBox;

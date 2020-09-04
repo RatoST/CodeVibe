@@ -9,7 +9,7 @@ export function getContacts() {
 
 export function saveContact(contact) {
   return fetch(baseUrl + (contact.id || ""), {
-    method: contact.id ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
+    method: contact.id ? "PUT" : "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(contact)
   })
