@@ -1,0 +1,16 @@
+.about-background {
+  border:10px solid green;
+  border-radius: 8px;
+  padding:0 5% 5% 5%;
+}
+
+.about-p {
+  font-size: 20px;
+  font-weight:200;
+}
+
+.about-title {
+  font-size: 50px;
+  font-weight:400;
+  margin-top:5%;
+}

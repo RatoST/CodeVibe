@@ -1,0 +1,27 @@
+.home-background {
+  background-image: linear-gradient(rgba(33, 97, 33, 0.911), rgba(174, 218, 174, 0.774));
+}
+
+.home-background-two {
+  background-image: linear-gradient(rgba(174, 218, 174, 0.774), rgba(33, 97, 33, 0.911));
+}
+
+.home-title {
+  font-size: 75px;
+  font-weight:700;
+}
+
+.home-title-two {
+  font-size: 50px;
+  font-weight:400;
+}
+
+.home-p {
+  font-size: 30px;
+  font-weight:400;
+}
+
+.home-p-two {
+  font-size: 20px;
+  font-weight:200;
+}

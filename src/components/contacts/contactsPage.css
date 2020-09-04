@@ -1,0 +1,9 @@
+.add-contact {
+  margin: 5% 0;
+}
+
+.contacts-background {
+  border:10px solid green;
+  border-radius: 8px;
+  padding: 5%;
+}
