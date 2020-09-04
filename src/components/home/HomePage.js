@@ -12,11 +12,15 @@ const HomePage = () => (
       </Link>
     </div>
     <div className="jumbotron home-background-two">
-      <h1 className="home-title-two">Contact list</h1>
-      <p className="home-p-two">Sign up and join on our contacts list.</p>
+      <h1 className="home-title-two">Be a part of the development world</h1>
+      <p className="home-p-two">Sign up and join on our contact list</p>
       <Link to="contact" className="btn btn-success btn-lg">
         Sign up
       </Link>
+      <p className="home-p-two" style={{marginTop:"3%"}} >or check out our contact list.</p>
+      <Link to="/contacts"  className="btn btn-success btn-lg">
+        Contacts
+      </Link> 
     </div>
   </div>
 );
