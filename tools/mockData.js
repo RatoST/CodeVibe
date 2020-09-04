@@ -6,7 +6,7 @@ const contacts = [
     address:"Milky Way 10",
     phone: "+38569987415",
     email:"mike.lee@react.hr",
-    slug: "1",
+    slug: "mikelee",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const contacts = [
     address:"Maple Leaves 8",
     phone: "+1574875154",
     email:"ana.neka@react.hr",
-    slug: "2",
+    slug: "annabannana",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const contacts = [
     address:"Avenue 13",
     phone: "+38597589647",
     email:"michael.lord@react.hr",
-    slug: "3",
+    slug: "michaellord",
   },
 ]
 

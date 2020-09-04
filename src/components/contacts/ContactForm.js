@@ -24,41 +24,41 @@ const ContactForm = ({
         label="First name"
         value={contact.fName}
         onChange={onChange}
-        error={errors.title}
+        error={errors.fName}
       />
       <TextInput
         name="lName"
         label="Last name"
         value={contact.lName}
         onChange={onChange}
-        error={errors.title}
+        error={errors.lName}
       />
       <TextInput
         name="address"
         label="Address"
         value={contact.address}
         onChange={onChange}
-        error={errors.title}
+        error={errors.address}
       />
       <TextInput
         name="phone"
         label="Phone"
         value={contact.phone}
         onChange={onChange}
-        error={errors.title}
+        error={errors.phone}
       />
       <TextInput
         name="email"
         label="Email"
         value={contact.email}
         onChange={onChange}
-        error={errors.title}
+        error={errors.email}
       />
 
       <button type="submit" disabled={saving} className="btn btn-success">
         {saving ? "Saving..." : "Save"}
       </button>
-      <Link to="contacts" className="btn btn-success" style={{marginLeft:"3%"}}>
+      <Link to="/" className="btn btn-success" style={{marginLeft:"3%"}}>
         Cancel
       </Link>
     </form>
