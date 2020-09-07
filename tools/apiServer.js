@@ -79,5 +79,6 @@ function validateContact(contact) {
   if (!contact.address) return "Address is required.";
   if (!contact.phone) return "Phone is required.";
   if (!contact.email) return "Email is required.";
+  if (!contact.checkbox) return "Terms must be accepted.";
   return "";
 }

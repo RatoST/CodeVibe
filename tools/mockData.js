@@ -6,6 +6,7 @@ const contacts = [
     address:"Milky Way 10",
     phone: "+38569987415",
     email:"mike.lee@react.hr",
+    checkbox:"on",
     slug: "mikelee",
   },
   {
@@ -15,6 +16,7 @@ const contacts = [
     address:"Maple Leaves 8",
     phone: "+1574875154",
     email:"ana.neka@react.hr",
+    checkbox:"on",
     slug: "annabannana",
   },
   {
@@ -24,6 +26,7 @@ const contacts = [
     address:"Avenue 13",
     phone: "+38597589647",
     email:"michael.lord@react.hr",
+    checkbox:"on",
     slug: "michaellord",
   },
 ]

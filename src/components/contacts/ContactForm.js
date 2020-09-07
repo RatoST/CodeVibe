@@ -56,12 +56,14 @@ const ContactForm = ({
         type="email"
         value={contact.email}
       />
+      {contact.id ? null : (
       <CheckBox
         error={errors.checkbox}  
         label="Agree on terms"
         name="checkbox"        
         onChange={onChange}              
       />
+      )}
       <button type="submit" disabled={saving} className="btn btn-success">
         {saving ? "Saving..." : "Save"}
       </button>

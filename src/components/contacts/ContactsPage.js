@@ -58,7 +58,7 @@ const ContactsPage = ({ actions, contacts, loading, ...props }) => {
 }
 ContactsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  contact: PropTypes.object.isRequired,
+  contact: PropTypes.object,
   contacts: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };

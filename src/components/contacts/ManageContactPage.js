@@ -35,10 +35,11 @@ const ManageContactPage = ({ contacts, history, loadContacts, saveContact, ...pr
     if (!fName) errors.fName = "Required";
     if (!lName) errors.lName = "Required";
     if (!address) errors.address = "Required";
-    if (!phone) errors.phone = "Required";
-    if (!phone.includes("+")) errors.phone = "Bad format";
-    if (!email) errors.email = "Required";
-    if (!email.includes("@")) errors.email = "Bad format";
+    if (!phone) {errors.phone = "Required"}
+    else if (!phone.includes("+")){errors.phone = "Bad format"}
+    if (!email) errors.email = "Required"
+    else if (!email.includes("@")) errors.email = "Bad format"
+    else if (!email.includes(".")) errors.email = "Bad format";
     if (!checkbox) errors.checkbox = "You need to accept terms";
 
     setErrors(errors);
